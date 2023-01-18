@@ -1,0 +1,37 @@
+{
+  "name": "nodejs-image-processing-api-express-sharp",
+  "version": "1.0.0",
+  "description": "Creating an API for resizing images using express and sharp",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "format": "prettier --write src/**/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eng-Yasmina/NodeJS-Image-Processing-API-Express-Sharp.git"
+  },
+  "keywords": [],
+  "author": "Yasmine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eng-Yasmina/NodeJS-Image-Processing-API-Express-Sharp/issues"
+  },
+  "homepage": "https://github.com/Eng-Yasmina/NodeJS-Image-Processing-API-Express-Sharp#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

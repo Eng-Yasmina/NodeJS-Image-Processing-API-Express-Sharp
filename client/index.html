@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PROMO.com</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <!-- HTML document follows BEM naming conventions-->
+        <header>
+            <a href="#" class="promo__logo">PROMO<span>.com</span></a>
+        </header>
+        <section class="promo__main">
+            <div>
+                <h1 class="promo__main__title">Free Image Resizer</h1>
+                
+                <form action="gallery.html" class="promo__main__form" enctype="multipart/form-data" id="form">
+                    <label for="upload" class="promo__main__form__label">Upload your image</label>
+                    <input type="file" name="thumbnail" id="thumbnail" class="promo__main__form__upload">
+                    <input type="submit" name="submit" id="submit" class="promo__main__form__submit" value="Generate">
+                    <p id="error" class="promo__main__form__errmsg">Sorry no image is uploaded, try again</p>
+                    <p id="error2" class="promo__main__form__errmsg2">Invalid image file</p>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>
