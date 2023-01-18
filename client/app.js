@@ -41,7 +41,7 @@ const notImageErrMsg = () => {
  * 
  * @description validates uplaoding a file before clicking submit and validates that the uploaded file is an image
  */
-const validateForm = (e) => {
+const validateForm = async (e) => {
     // thumbnail is a local variable because i want to get it's value and validate it after the user hit generate
     const thumbnail = document.getElementById('thumbnail').value;
     // validates uplaoding a file before clicking submit
@@ -55,6 +55,8 @@ const validateForm = (e) => {
         const expectedExtensions = ['jpg', 'jpeg', 'png'];
         // make sure that the entered image's extension is 'jpg' or 'jpej' or 'png'
         if (expectedExtensions.includes(extension)) {
+            const formData = new FormData(form);
+            await postImage('/api/resizedImages', formData);
             return true;
         } else {
             // to prevent the action of going to the gallery page
@@ -68,6 +70,16 @@ const validateForm = (e) => {
         noFileErrMsg();
     }
 }
+
+/**
+ * @description async fn to POST the uploaded image in server
+ */
+const postImage = async (url = '', data) => {
+    await fetch(url, {
+        method: 'POST',
+        body: data
+    });
+};
 
 /**
  * End Main Functions

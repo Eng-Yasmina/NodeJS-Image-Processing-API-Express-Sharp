@@ -4,6 +4,7 @@ import express, { Request, Response } from 'express';
 import morgan from 'morgan';
 // Helmet to secure my express server
 import helmet from 'helmet';
+import route from './route';
 
 // instance of the express server
 const app: express.Application = express();
@@ -26,5 +27,7 @@ app.use(express.json());
 /* Routes */
 /* Use the static files in the client folder to appear on our API (localhost: 3000) */
 app.use(express.static('client'));
+// Use create route for its data to be showen on (localhost:3000/api/resizedImages)
+app.use('/api', route);
 
 export default app;
