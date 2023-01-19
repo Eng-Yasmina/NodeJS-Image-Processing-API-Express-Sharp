@@ -55,9 +55,10 @@ const validateForm = async (e) => {
         const expectedExtensions = ['jpg', 'jpeg', 'png'];
         // make sure that the entered image's extension is 'jpg' or 'jpej' or 'png'
         if (expectedExtensions.includes(extension)) {
+            e.preventDefault();
             const formData = new FormData(form);
             await postImage('/api/resizedImages', formData);
-            return true;
+            return true; 
         } else {
             // to prevent the action of going to the gallery page
             e.preventDefault();
