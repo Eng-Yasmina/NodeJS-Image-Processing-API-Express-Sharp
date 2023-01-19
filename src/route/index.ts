@@ -9,8 +9,8 @@ const uploads = multer ({ storage });
 const route = Router();
 
 route.post('/resizedImages', uploads.single('thumbnail'), controller.create);
-route.get('/resizedImages/900_500', controller.get_900_500);
-route.get('/resizedImages/600_300', controller.get_600_300);
+route.get('/resizedImages/500_500', controller.get_500_500);
+route.get('/resizedImages/300_300', controller.get_300_300);
 route.get('/resizedImages/200_200', controller.get_200_200);
 
 export default route;

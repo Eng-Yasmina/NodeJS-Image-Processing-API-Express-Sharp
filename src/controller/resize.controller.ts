@@ -10,7 +10,7 @@ const checkModel = new CheckModel;
 
 const outputDirectory = path.join(__dirname, '../../assets/thumbnails/') as string;
 let imageName: string | undefined = '';
-let dimensions = [{w: 900 as number, h: 500 as number}, {w: 600 as number, h: 300 as number}, {w: 200 as number, h: 200 as number}];
+let dimensions = [{w: 500 as number, h: 500 as number}, {w: 300 as number, h: 300 as number}, {w: 200 as number, h: 200 as number}];
 
 //create images and resize them 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
@@ -36,21 +36,21 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
     }
 }
 
-//get the image of dimension (900 × 500)
-export const get_900_500 = async (req: Request, res: Response, next: NextFunction) => {
+//get the image of dimension (500 × 500)
+export const get_500_500 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await resizeModel.create;
-        res.sendFile(`${outputDirectory}900-500-${imageName}`);
+        res.sendFile(`${outputDirectory}500-500-${imageName}`);
     } catch (error) {
         next(error);
     }
 }
 
-//get the image of dimension (600 × 300) 
-export const get_600_300 = async (req: Request, res: Response, next: NextFunction) => {
+//get the image of dimension (300 × 300) 
+export const get_300_300 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await resizeModel.create;
-        res.sendFile(`${outputDirectory}600-300-${imageName}`);
+        res.sendFile(`${outputDirectory}300-300-${imageName}`);
     } catch (error) {
         next(error);
     }
