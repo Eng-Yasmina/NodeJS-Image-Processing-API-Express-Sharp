@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router } from 'express';
 import * as controller from '../controller/resize.controller';
 import multer from 'multer';
 // use multer storage to store the uploaded images there before calling it for resizing
 const storage = multer.memoryStorage();
-const uploads = multer ({ storage });
+const uploads = multer({ storage });
 
 // instance of Router
 const route = Router();

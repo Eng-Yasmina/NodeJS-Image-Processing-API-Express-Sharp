@@ -1,5 +1,5 @@
 /* Exress to run server and routes */
-import express, { Request, Response } from 'express';
+import express from 'express';
 // morgan logger
 import morgan from 'morgan';
 // Helmet to secure my express server
@@ -12,8 +12,8 @@ const app: express.Application = express();
 /* Start express server */
 const port = 3000;
 const listenToServer = () => {
-    console.log(`server is running on localhost: ${port}`);
-}
+  console.log(`server is running on localhost: ${port}`);
+};
 app.listen(port, listenToServer);
 
 /* MiddleWares to run automatically on recieved HTTP requests */

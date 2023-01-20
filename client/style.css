@@ -141,18 +141,29 @@ input[type=file] {
     display: inline-block;
     transition: 0.7s ease;
     font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
 }
-.promo__main__form__errmsg {
+.promo__main__form__submit:hover {
+    transform: scale(1.05);
+}
+.promo__main__form__errmsg, .promo__main__form__errmsg2 {
+    position: fixed;
+    bottom: 0.5em;
+    font-size: 1em;
+    font-weight: 300;
+    background: #f1aeb5;
+    border: 1px solid #c46972;
+    color: #b02a37;
+    padding: 0.5rem 1rem 0.5rem 1rem;border-radius: 0.375rem;
     display: none;
 }
-.promo__main__form__errmsg2 {
-    display: none;
-}
 
 
 
+/** gallery page **/
 .bromo__gallery__container {
     background: linear-gradient(90deg, #491853ab 0%, #180294cc 100%);
+    font-family: 'Quicksand', sans-serif;
 }
 
 .bromo__gallery__title {
@@ -191,6 +202,11 @@ bottom: 63vh;
     text-align: center;
     gap: 5px;
     color: #f0f0f0;
+}
+
+.bromo__gallery__content__info h3{
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .bromo__gallery__content__image {
