@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BROMO GALLERY</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <section class="bromo__gallery__container">
@@ -13,8 +14,7 @@
 
         <div class="bromo__gallery__content">
             <div class="bromo__gallery__content__card">
-                <div class="bromo__gallery__content__image">
-                    <img src="http://localhost:3000/api/resizedImages/500_500" alt="resize_img_500_500">
+                <div class="bromo__gallery__content__image" id="imga">
                 </div>
                 <div class="bromo__gallery__content__info">
                     <h3>Image Size</h3>
@@ -23,8 +23,7 @@
             </div>
 
             <div class="bromo__gallery__content__card">
-                <div class="bromo__gallery__content__image">
-                    <img src="http://localhost:3000/api/resizedImages/300_300" alt="resize_img_300_300">
+                <div class="bromo__gallery__content__image" id="imgb">
                 </div>
                 <div class="bromo__gallery__content__info">
                     <h3>Image Size</h3>
@@ -33,7 +32,7 @@
             </div>
 
             <div class="bromo__gallery__content__card">
-                <div class="bromo__gallery__content__image">
+                <div class="bromo__gallery__content__image" id="imgc">
                     <img src="http://localhost:3000/api/resizedImages/200_200" alt="resize_img_200_200">
                 </div>
                 <div class="bromo__gallery__content__info">
@@ -43,5 +42,6 @@
             </div>
         </div>
     </section>
+    <script src="app.js" defer></script>
 </body>
 </html>

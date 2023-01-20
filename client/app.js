@@ -1,9 +1,12 @@
 /**
  * Define Global Variables
  */
+
 const form = document.getElementById('form');
 const error = document.getElementById('error');
 const error2 = document.getElementById('error2');
+const goHome = document.getElementById('goHome');
+
 
 
 /**
@@ -31,6 +34,23 @@ const notImageErrMsg = () => {
     }, 2000);
 }
 
+/**
+ * @description Fade out Effect
+ */
+function fadeOutEffect(element ='') {
+    const fadeElement = document.querySelector(element);
+    const fadeEffect = setInterval(function () {
+        if (!fadeElement.style.opacity) {
+            fadeElement.style.opacity = 1;
+        }
+        if (fadeElement.style.opacity > 0) {
+            fadeElement.style.opacity -= 0.1;
+        } else {
+            clearInterval(fadeEffect);
+        }
+    }, 200);
+}
+
 
 /**
  * End Helper Functions
@@ -41,7 +61,9 @@ const notImageErrMsg = () => {
  * 
  * @description validates uplaoding a file before clicking submit and validates that the uploaded file is an image
  */
-const validateForm = async (e) => {
+const validateForm = (e) => {
+    // to prevent the default action refreshing the page after submitting
+    e.preventDefault();
     // thumbnail is a local variable because i want to get it's value and validate it after the user hit generate
     const thumbnail = document.getElementById('thumbnail').value;
     // validates uplaoding a file before clicking submit
@@ -56,17 +78,21 @@ const validateForm = async (e) => {
         // make sure that the entered image's extension is 'jpg' or 'jpej' or 'png'
         if (expectedExtensions.includes(extension)) {
             const formData = new FormData(form);
-            await postImage('/api/resizedImages', formData);
+            //post the image to the server then retrieve the resized one then dynamically update the UI
+            postImage('/api/resizedImages', formData).then(() => {
+                retrieveData();
+            }).then(() => {
+                setTimeout(() => {
+                    updateUI();
+                }, 2000);
+            });
             return true; 
         } else {
-            // to prevent the action of going to the gallery page
-            e.preventDefault();
             // throw error
             notImageErrMsg();
         }
         return true;
     } else {
-        e.preventDefault();
         noFileErrMsg();
     }
 }
@@ -79,12 +105,46 @@ const postImage = async (url = '', data) => {
         method: 'POST',
         body: data
     });
+    fadeOutEffect('.promo__logo');
+    fadeOutEffect('.social');
+    fadeOutEffect('.promo__description');
 };
+
+
+/**
+ * @description asynchronous function to fetch the images from the app endpoints and to check the status before retrieving them.
+ */
+const retrieveData = async () => {
+    const request = await fetch('/api/resizedImages/500_500', { method: 'GET' });
+    try {
+        if (request.status === 200) {
+            console.log(request.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+/* Dynamically update the UI of my app.*/
+//Retrieve the stored resized images from the server.
+const updateUI = () => {
+    document.querySelector('.promo__main').style.display = 'none';
+    document.querySelector('.promo__logo').style.display = 'none';
+    document.querySelector('.bromo__gallery__content__image').innerHTML = '<img src="http://localhost:3000/api/resizedImages/500_500" alt="resize_img_500_500"/>';
+    document.querySelector('.imageb').innerHTML = '<img src="http://localhost:3000/api/resizedImages/300_300" alt="resize_img_300_300"/>';
+    document.querySelector('.imagec').innerHTML = '<img src="http://localhost:3000/api/resizedImages/200_200" alt="resize_img_200_200"/>';
+    document.querySelector('.bromo__gallery__container').style.display = 'block';
+}
+
+const homePage = () => {
+    window.location.reload();
+}
 
 /**
  * End Main Functions
  * Begins Events
  */
 form.addEventListener('submit', validateForm);
+goHome.addEventListener('click', homePage);
 
 

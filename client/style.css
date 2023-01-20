@@ -13,6 +13,7 @@
     list-style: none;
 }
 
+
 /* Layout Rules */
 section {
     padding: 1em;
@@ -47,13 +48,15 @@ header a span {
     font-size: 0.53em;
     font-weight: 400;
 }
+
 .promo__main {
     width: 100%;
     height: 100vh;
     background: linear-gradient(90deg, #a7189bab 0%, #0062ffcc 100%);
     background-position: center;
     background-size: cover;
-
+    opacity: 1;
+    transition: 3s ease;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -164,6 +167,7 @@ input[type=file] {
 .bromo__gallery__container {
     background: linear-gradient(90deg, #491853ab 0%, #180294cc 100%);
     font-family: 'Quicksand', sans-serif;
+    display: none;
 }
 
 .bromo__gallery__title {
@@ -172,7 +176,7 @@ input[type=file] {
     right: 9vw;
     font-size: 80px;
     font-weight: 300;
-bottom: 63vh;
+    bottom: 63vh;
     text-align: end;
 }
 .bromo__gallery__title span {
@@ -211,4 +215,21 @@ bottom: 63vh;
 
 .bromo__gallery__content__image {
     width: 100%;
+}
+
+.go-home {
+    cursor: pointer;
+    position: fixed;
+    bottom: 7%;
+    right: 3%;
+    background: transparent;
+    transition: 0.7s ease;
+}
+.go-home:hover {
+    transform: scale(1.1);
+}
+
+.fa-circle-chevron-right {
+    color: #F0814E;
+    font-size: 4em;
 }
