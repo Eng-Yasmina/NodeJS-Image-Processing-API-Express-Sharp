@@ -40,7 +40,7 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
 export const get_500_500 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await resizeModel.create;
-        res.sendFile(`${outputDirectory}500-500-${imageName}`);
+        res.status(200).sendFile(`${outputDirectory}500-500-${imageName}`);
     } catch (error) {
         next(error);
     }
@@ -50,7 +50,7 @@ export const get_500_500 = async (req: Request, res: Response, next: NextFunctio
 export const get_300_300 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await resizeModel.create;
-        res.sendFile(`${outputDirectory}300-300-${imageName}`);
+        res.status(200).sendFile(`${outputDirectory}300-300-${imageName}`);
     } catch (error) {
         next(error);
     }
@@ -60,7 +60,7 @@ export const get_300_300 = async (req: Request, res: Response, next: NextFunctio
 export const get_200_200 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await resizeModel.create;
-        res.sendFile(`${outputDirectory}200-200-${imageName}`);
+        res.status(200).sendFile(`${outputDirectory}200-200-${imageName}`);
     } catch (error) {
         next(error);
     }

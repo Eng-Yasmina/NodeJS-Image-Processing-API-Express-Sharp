@@ -1,5 +1,6 @@
 /* Load Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* Base Rules */
 * {
@@ -26,8 +27,121 @@ img {
     border-radius: 2%;
 }
 
-/* Module Rules */
+/* ---- Module Rules ---- */
+/*index page*/
+header {
+    background-color: transparent;
+    padding: 1em 4em;
+    position: fixed;
+}
 
+header a {
+    color: #f0f0f0;
+    font-size: 1.8em;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 1px;
+}
+
+header a span {
+    font-size: 0.53em;
+    font-weight: 400;
+}
+.promo__main {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(90deg, #a7189bab 0%, #0062ffcc 100%);
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4em;
+}
+.social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    width: 30em;
+}
+.fa-instagram {
+    color: #ffee00;
+    font-size: 8em;
+    rotate: -25deg;
+}
+.fa-youtube {
+    color: #e01414;
+    font-size: 14em;
+    rotate: 15deg;
+    transform: translateY(0.3em);
+}
+
+.fa-facebook {
+    color: #3914e0;
+    font-size: 9em;
+    rotate: -15deg; 
+}
+
+.fa-tiktok {
+    color: #dadada;
+    font-size: 9em;
+    rotate: -15deg; 
+}
+
+.promo__main__title {
+    color: #f0f0f0;
+    font-size: 5em;
+    font-weight: 700;
+    margin: 0.9em 0 0.3em 0;
+    letter-spacing: 1px;
+}
+
+.promo__main__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo__main__form__label {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+    width: 15em;
+    font-size: 2em;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+    background: rgba(193, 228, 252, 0.322);
+}
+
+input[type=file] {
+    display: none;
+  }
+
+
+.promo__main__form__submit {
+    color: #f0f0f0;
+    background-color: #3a6cf4;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 0.937em 2.18em;
+    border-radius: 15px;
+    margin-top: 25px;
+    display: inline-block;
+    transition: 0.7s ease;
+    font-family: 'Quicksand', sans-serif;
+}
 .promo__main__form__errmsg {
     display: none;
 }
