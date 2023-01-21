@@ -1,6 +1,6 @@
 # NodeJS Image Processing API Express Sharp
 - This project is about building an API that can be used as a library to serve properly scaled versions of the uploaded image.
- Rather than needing to resize and upload multiple copies of the same image to be used throughout BROMO site, the API handle resizing and serving stored images for me.
+ Rather than needing to resize and upload multiple copies of the same image to be used throughout your site, the API handle resizing and serving stored images for you.
 - Using the solution of fetch and modern promises, I developed an async js web app that uses the uploaded images and my image processing API to dynamically update the UI for the BROMO web app.
 # Demo Preview
 ![resize-images-api.gif](./docs/screenshots/resize%20images%20API.gif)
