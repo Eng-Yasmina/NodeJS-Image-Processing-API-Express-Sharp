@@ -8,16 +8,16 @@ const resizeModel = new ResizeModel();
 //instance from the CheckModel class
 const checkModel = new CheckModel();
 
+const inputDirectory = path.join(
+  __dirname,
+  '../../assets/'
+  ) as string;
 const outputDirectory = path.join(
   __dirname,
   '../../assets/thumbnails/'
 ) as string;
-let imageName: string | undefined = '';
-const dimensions = [
-  { w: 500 as number, h: 500 as number },
-  { w: 300 as number, h: 300 as number },
-  { w: 200 as number, h: 200 as number },
-];
+
+
 
 //create images and resize them
 export const create = async (
@@ -28,64 +28,33 @@ export const create = async (
   try {
     //At first check if the thumbnail directory exists and create if it doesn't
     await checkModel.isDirectoryFound(outputDirectory);
-    // catch the name of the uploaded image and store it in imageNamge variable to use it in the get route also
-    imageName = req.file?.originalname;
-    console.log(imageName);
-    res.send('the uploaded image is recieved');
-    //loop over the dimensions arrey to resize the image to each (w×h) pair
-    for (const dimension of dimensions) {
-      const t: Thumbnail = {
-        buffer: req.file?.buffer as Buffer,
-        width: dimension.w,
-        height: dimension.h,
-        outputFile:
-          `${outputDirectory}${dimension.w}-${dimension.h}-${imageName}` as string,
-      } as Thumbnail;
-      resizeModel.create(t);
+    const extension = req.query.ext as string;
+    const imagName = req.query.img as string;
+    const inputWidth = req.query.w as string;
+    const inputHeight = req.query.h as string;
+
+    const t: Thumbnail = {
+      inputFile: `${inputDirectory}${imagName}.${extension}` as string,
+      width: parseInt(inputWidth) as number,
+      height: parseInt(inputHeight) as number,
+      outputFile:
+        `${outputDirectory}${imagName}-${inputWidth}-${inputHeight}.${extension}` as string,
+    } as Thumbnail;
+
+    const expectedExtensions = ['jpg', 'jpeg', 'png'];
+    // make sure that the entered image's extension is 'jpg' or 'jpej' or 'png'
+    if (!expectedExtensions.includes(extension)) {
+        if (extension === undefined || imagName === undefined || inputWidth === undefined || inputHeight === undefined) {
+          res.status(400).send('Missing query parameter, try again');
+      } else {
+        res.status(400).send('Sorry, not a supported image format');
+      }
+    } else {
+      resizeModel.create(t).then(() => { res.status(200).sendFile(`${t.outputFile}`) });
     }
   } catch (error) {
     next(error);
   }
 };
 
-//get the image of dimension (500 × 500)
-export const get_500_500 = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    await resizeModel.create;
-    res.status(200).sendFile(`${outputDirectory}500-500-${imageName}`);
-  } catch (error) {
-    next(error);
-  }
-};
 
-//get the image of dimension (300 × 300)
-export const get_300_300 = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    await resizeModel.create;
-    res.status(200).sendFile(`${outputDirectory}300-300-${imageName}`);
-  } catch (error) {
-    next(error);
-  }
-};
-
-//get the image of dimension (200 × 200)
-export const get_200_200 = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    await resizeModel.create;
-    res.status(200).sendFile(`${outputDirectory}200-200-${imageName}`);
-  } catch (error) {
-    next(error);
-  }
-};

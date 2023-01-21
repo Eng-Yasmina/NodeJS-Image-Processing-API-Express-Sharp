@@ -1,9 +1,8 @@
 # NodeJS Image Processing API Express Sharp
-- This project is about building an API that can be used as a library to serve properly scaled versions of the uploaded image.
+- This project is about building an API that can be used as a library to serve properly scaled versions of the your image.
  Rather than needing to resize and upload multiple copies of the same image to be used throughout your site, the API handle resizing and serving stored images for you.
-- Using the solution of fetch and modern promises, I developed an async js web app that uses the uploaded images and my image processing API to dynamically update the UI for the BROMO web app.
+
 # Demo Preview
-![resize-images-api.gif](./docs/screenshots/resize%20images%20API.gif)
 ![resize-images-api.gif](./docs/screenshots/screencapture-localhost-3000-2023-01-21-08_27_53.png)
 
 # Technologies / Tools  
@@ -13,7 +12,6 @@
 - Prettier
 - Es-lint 
 - Sharp
-- Multer
 
 # Scripts
 - Install all dependencies: ```npm install```
@@ -74,43 +72,35 @@
     ```
 
 ## 2. Resize the uploaded images
-1. Client side :
-- In index.html, add enctype to your form
-
-![form.png](./docs/screenshots/Screenshot%202023-01-21%20092806.png)
-- In app.js, after validating  the form, send a POST request to the server to store the uploaded image.
-![resize-images-api.png](./docs/screenshots/Screenshot%202023-01-21%20094901.png)
-
-2. Server side :
-- Install Multer middleware to process files uploaded in multipart/form-data format. :
-    ```bash
-        npm i multer
-        npm i @types/multer --save-dev
-    ```
-- Use multer storage to store the uploaded images there before handling the POST request in the POST router 
-![multer-storage.png](./docs/screenshots/Screenshot%202023-01-21%20093738.png)
 - Install Sharp to resize the uploaded images
     ```bash
         npm i sharp
         npm i @types/sharp --save-dev
     ```
-- Use sharp to resize the uploaded image using it's buffer
-![sharp-resize.png](./docs/screenshots/Screenshot%202023-01-21%20101551.png)
-- Send GET request to the server to retrieve the stored data from the server and dynamically update the UI of the web app.
+- Use sharp to resize the images according to user inputs.
+These inputs are filename, height and width and extensions
+![sharp-resize.png](./docs/screenshots/Screenshot%202023-01-21%20230500.png)
+. the supportes extensions are (PNG or JPG or JPEG)
+- Retrieve the stored data from the server and dynamically update the UI of the web app.
 
-# API Routes
+# API Route
     ```bash
-        .post('/resizedImages', uploads.single('thumbnail'), controller.create);
-        .get('/resizedImages/500_500', controller.get_500_500);
-        .get('/resizedImages/300_300', controller.get_300_300);
-        .get('/resizedImages/200_200', controller.get_200_200);
+        .get('/api', controller.create);
     ```
 
 
-# Endpoints
-http://localhost:3000/api/resizedImages/500_500
-http://localhost:3000/api/resizedImages/300_300
-http://localhost:3000/api/resizedImages/200_200
+# Endpoint
+`/api?w={width}&h={height}&img={imgName}&ext={extension}`
+
+Query parameters :
+- `w` : the width of the image in pixels
+- `h` : the height of the image in pixels
+- `img` : the filename
+- `ext` : the extension of the image in ( png or jpeg or  jpg)
+### For Example :
+```http://localhost:3000/api?w=500&h=500&img=shape&ext=jpg```
+```http://localhost:3000/api?w=300&h=300&img=shape&ext=jpg```
+```http://localhost:3000/api?w=200&h=200&img=shape&ext=jpg```
 
 # Unit Testing
 ```npm run test```

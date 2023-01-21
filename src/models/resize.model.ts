@@ -5,7 +5,7 @@ import sharp from 'sharp';
 const checkModel = new CheckModel();
 
 export type Thumbnail = {
-  buffer: Buffer;
+  inputFile: string;
   width: number;
   height: number;
   outputFile: string;
@@ -19,7 +19,7 @@ export class ResizeModel {
       const thumbnailIsFound = await checkModel.isFileFound(t.outputFile);
       if (!thumbnailIsFound) {
         // use sharp to resize the uploaded image and create a thumbnail
-        await sharp(t.buffer).resize(t.width, t.height).toFile(t.outputFile);
+        await sharp(t.inputFile).resize(t.width, t.height).toFile(t.outputFile);
         return t.outputFile as string;
       }
       return t.outputFile as string;

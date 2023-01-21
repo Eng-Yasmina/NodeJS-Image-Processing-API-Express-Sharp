@@ -167,7 +167,7 @@ input[type=file] {
 .bromo__gallery__container {
     background: linear-gradient(90deg, #491853ab 0%, #180294cc 100%);
     font-family: 'Quicksand', sans-serif;
-    display: none;
+
 }
 
 .bromo__gallery__title {
