@@ -8,16 +8,11 @@ const resizeModel = new ResizeModel();
 //instance from the CheckModel class
 const checkModel = new CheckModel();
 
-const inputDirectory = path.join(
-  __dirname,
-  '../../assets/'
-  ) as string;
+const inputDirectory = path.join(__dirname, '../../assets/') as string;
 const outputDirectory = path.join(
   __dirname,
   '../../assets/thumbnails/'
 ) as string;
-
-
 
 //create images and resize them
 export const create = async (
@@ -44,17 +39,22 @@ export const create = async (
     const expectedExtensions = ['jpg', 'jpeg', 'png'];
     // make sure that the entered image's extension is 'jpg' or 'jpej' or 'png'
     if (!expectedExtensions.includes(extension)) {
-        if (extension === undefined || imagName === undefined || inputWidth === undefined || inputHeight === undefined) {
-          res.status(400).send('Missing query parameter, try again');
+      if (
+        extension === undefined ||
+        imagName === undefined ||
+        inputWidth === undefined ||
+        inputHeight === undefined
+      ) {
+        res.status(400).send('Missing query parameter, try again');
       } else {
         res.status(400).send('Sorry, not a supported image format');
       }
     } else {
-      resizeModel.create(t).then(() => { res.status(200).sendFile(`${t.outputFile}`) });
+      resizeModel.create(t).then(() => {
+        res.status(200).sendFile(`${t.outputFile}`);
+      });
     }
   } catch (error) {
     next(error);
   }
 };
-
-
