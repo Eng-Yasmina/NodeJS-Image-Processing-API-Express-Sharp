@@ -99,7 +99,9 @@ Query parameters :
 - `ext` : the extension of the image in ( png or jpeg or  jpg)
 ### For Example :
 ```http://localhost:3000/api?w=500&h=500&img=shape&ext=jpg```
+
 ```http://localhost:3000/api?w=300&h=300&img=shape&ext=jpg```
+
 ```http://localhost:3000/api?w=200&h=200&img=shape&ext=jpg```
 
 # Unit Testing
