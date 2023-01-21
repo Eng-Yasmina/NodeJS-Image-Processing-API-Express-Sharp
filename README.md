@@ -26,7 +26,7 @@
 - Upload any image (.png / .jpeg / .jpg) to resize it to (500px × 500px) & (300px × 300px) & (200px × 200px) 
 
 
-# Learn how to build a Nodejs API and how I've developed this Image Processing Web APP
+# Learn how to build a Nodejs API and how I have developed this Image Processing Web APP
 ## 1. Set up the server and configure typeScript
 - Initialize ```package.json``` :
     ```bash
@@ -76,6 +76,7 @@
 ## 2. Resize the uploaded images
 1. Client side :
 - In index.html, add enctype to your form
+
 ![form.png](./docs/screenshots/Screenshot%202023-01-21%20092806.png)
 - In app.js, after validating  the form, send a POST request to the server to store the uploaded image.
 ![resize-images-api.png](./docs/screenshots/Screenshot%202023-01-21%20094901.png)
@@ -123,10 +124,12 @@ http://localhost:3000/api/resizedImages/200_200
 ![unit-testing.png](./docs/screenshots/Screenshot%202023-01-21%20130701.png)
 
 # Table of contents
-- [Project Title](#nodejs-weather-web-app)
+- [Project Title](#nodejs-image-processing-api-express-sharp)
+- [Demo Preview](#demo-preview)
 - [Scripts](#scripts)
 - [Usage](#usage)
-- [Demo Preview](#demo-preview)
+- [Steps to build a Nodejs API](#learn-how-to-build-a-nodejs-api-and-how-i-have-developed-this-image-processing-web-app)
+- [API Routes](#api-routes)
+- [Endpoints](#endpoints)
+- [Unit Testing](#unit-testing)
 - [Table of contents](#table-of-contents)
-
-# Steps to build a Nodejs API
