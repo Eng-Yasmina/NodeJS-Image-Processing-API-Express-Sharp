@@ -39,22 +39,44 @@ export const create = async (
     const expectedExtensions = ['jpg', 'jpeg', 'png'];
     // make sure that the entered image's extension is 'jpg' or 'jpej' or 'png'
     if (!expectedExtensions.includes(extension)) {
-      if (
-        extension === undefined ||
-        imagName === undefined ||
-        inputWidth === undefined ||
-        inputHeight === undefined
-      ) {
-        res.status(400).send('Missing query parameter, try again');
-      } else {
-        res.status(400).send('Sorry, not a supported image format');
-      }
+      res
+        .status(400)
+        .json(
+          'Sorry, not it is supported image format .. supported formats are PNG, JPEG, JPEG'
+        );
+      return next();
+    } else if (
+      extension === undefined ||
+      imagName === undefined ||
+      inputWidth === undefined ||
+      inputHeight === undefined
+    ) {
+      res.status(400).json('Missing query parameter, try again');
+      return next();
+    } else if (
+      isNaN(inputWidth as unknown as number) ||
+      isNaN(inputHeight as unknown as number)
+    ) {
+      res
+        .status(400)
+        .json(
+          'Invalid input for height or width ! ..height and width have to be numbers ..try again'
+        );
+      return next();
     } else {
-      resizeModel.create(t).then(() => {
-        res.status(200).sendFile(`${t.outputFile}`);
-      });
+      const inputImgFound = await checkModel.isFileFound(t.inputFile);
+      if (inputImgFound) {
+        resizeModel.create(t).then(() => {
+          res.status(200).sendFile(`${t.outputFile}`);
+        });
+      } else {
+        res
+          .status(404)
+          .json('Ohh..something went wrong ! ..the image does not exist');
+        return next();
+      }
     }
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
