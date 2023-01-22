@@ -55,7 +55,9 @@ export const create = async (
       return next();
     } else if (
       isNaN(inputWidth as unknown as number) ||
-      isNaN(inputHeight as unknown as number)
+      isNaN(inputHeight as unknown as number) ||
+      (inputWidth as unknown as number) <= 0 ||
+      (inputHeight as unknown as number) <= 0
     ) {
       res
         .status(400)
