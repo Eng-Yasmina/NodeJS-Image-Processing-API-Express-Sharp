@@ -42,7 +42,7 @@ export const create = async (
       res
         .status(400)
         .json(
-          'Sorry, not it is supported image format .. supported formats are PNG, JPEG, JPEG'
+          'Sorry, it is not a supported image format .. supported formats are PNG, JPEG, JPEG'
         );
       return next();
     } else if (
